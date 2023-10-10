@@ -9,7 +9,7 @@ import type { FormEvent } from "react";
 import type { AgentStep } from "langchain/schema";
 
 import { ChatMessageBubble } from "@/components/ChatMessageBubble";
-import { UploadDocumentsForm } from "@/components/UploadDocumentsForm";
+// import { UploadDocumentsForm } from "@/components/UploadDocumentsForm";
 import { IntermediateStep } from "./IntermediateStep";
 
 export function ChatWindow(props: {
@@ -27,13 +27,13 @@ export function ChatWindow(props: {
 
   const [showIntermediateSteps, setShowIntermediateSteps] = useState(false);
   const [intermediateStepsLoading, setIntermediateStepsLoading] = useState(false);
-  const ingestForm = showIngestForm && <UploadDocumentsForm></UploadDocumentsForm>;
-  const intemediateStepsToggle = showIntermediateStepsToggle && (
-    <div>
-      <input type="checkbox" id="show_intermediate_steps" name="show_intermediate_steps" checked={showIntermediateSteps} onChange={(e) => setShowIntermediateSteps(e.target.checked)}></input>
-      <label htmlFor="show_intermediate_steps"> Show intermediate steps</label>
-    </div>
-  );
+  // const ingestForm = showIngestForm && <UploadDocumentsForm></UploadDocumentsForm>;
+  // const intemediateStepsToggle = showIntermediateStepsToggle && (
+  //   <div>
+  //     <input type="checkbox" id="show_intermediate_steps" name="show_intermediate_steps" checked={showIntermediateSteps} onChange={(e) => setShowIntermediateSteps(e.target.checked)}></input>
+  //     <label htmlFor="show_intermediate_steps"> Show intermediate steps</label>
+  //   </div>
+  // );
 
   const [sourcesForMessages, setSourcesForMessages] = useState<Record<string, any>>({});
 
@@ -126,11 +126,11 @@ export function ChatWindow(props: {
         )}
       </div>
 
-      {messages.length === 0 && ingestForm}
+      {/* {messages.length === 0 && ingestForm} */}
 
       <form onSubmit={sendMessage} className="flex w-full flex-col">
         <div className="flex">
-          {intemediateStepsToggle}
+          {/* {intemediateStepsToggle} */}
         </div>
         <div className="flex w-full mt-4">
           <input

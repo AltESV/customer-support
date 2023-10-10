@@ -1,540 +1,127 @@
-export default `# QA and Chat over Documents
+export default `
+# Fana FAQ
 
-Chat and Question-Answering (QA) over \`data\` are popular LLM use-cases.
+Get answers to the most frequently asked questions about Fana and Fanaverse.
 
-\`data\` can include many things, including:
+## General Questions
 
-* \`Unstructured data\` (e.g., PDFs)
-* \`Structured data\` (e.g., SQL)
-* \`Code\` (e.g., Python)
+### How do I open an account?
+Head over to [Fana Signup](https://fanaverse.app/#/signup) and have your passport and a proof of address ready (recent bank-statement or utility bill).
 
-Below we will review Chat and QA on \`Unstructured data\`.
+### Is Fana a bank?
+Fana is not a bank but our accounts and cards are provided by Paynetics UK (Company number 1248133). Paynetics UK is an electronic money institution authorised and regulated by the Financial Conduct Authority (firm reference number 942777).
 
-![intro.png](/img/qa_intro.png)
+### Who is Paynetics?
+Paynetics UK is an electronic money institution authorised and regulated by the Financial Conduct Authority (firm reference number 942777).
 
-\`Unstructured data\` can be loaded from many sources.
+### Do I need to be a UK resident?
+Yes, you currently need to be resident in the UK to get a Fana card.
 
-Check out the [document loader integrations here](/docs/modules/data_connection/document_loaders/) to browse the set of supported loaders.
+### What age do I need to be?
+Currently you must be 18 or older.
 
-Each loader returns data as a LangChain \`Document\`.
+### What fees do you charge?
+We charge a flat £5 subscription and in case of the physical card a one time shipping fee.
 
-\`Documents\` are turned into a Chat or QA app following the general steps below:
+### I have trouble logging in.
+Please have a look at our tutorial and in case you still get an error please [get in touch with us here](#).
 
-* \`Splitting\`: [Text splitters](/docs/modules/data_connection/document_transformers/) break \`Documents\` into splits of specified size
-* \`Storage\`: Storage (e.g., often a [vectorstore](/docs/modules/data_connection/vectorstores/)) will house [and often embed](https://www.pinecone.io/learn/vector-embeddings/) the splits
-* \`Retrieval\`: The app retrieves splits from storage (e.g., often [with similar embeddings](https://www.pinecone.io/learn/k-nearest-neighbor/) to the input question)
-* \`Output\`: An [LLM](/docs/modules/model_io/models/llms/) produces an answer using a prompt that includes the question and the retrieved splits
+### I need help.
+[Please get in touch with us](#).
 
-![flow.jpeg](/img/qa_flow.jpeg)
+### How do I cancel?
+[Please get in touch with us](#).
 
-## Quickstart
+### Can I withdraw money from an ATM?
+[To be added]
 
-Let's load this [blog post](https://lilianweng.github.io/posts/2023-06-23-agent/) on agents as an example \`Document\`.
+### Can I make transfers?
+[To be added]
 
-We'll have a QA app in a few lines of code.
+### What countries does your app work in?
+[To be added]
 
-First, set environment variables and install packages required for the guide:
+### How do I charge my card?
+[To be added]
 
-\`\`\`shell
-> yarn add cheerio
-# Or load env vars in your preferred way:
-> export OPENAI_API_KEY="..."
-\`\`\`
+### What if I changed my mind after funding my wallet?
+[To be added]
 
-## 1. Loading, Splitting, Storage
+### Can I spend the money in my wallet?
+[To be added]
 
-### 1.1 Getting started
+### What can I do with my achievements?
+[To be added]
 
-Specify a \`Document\` loader.
+## About Fana & Fanaverse
 
-\`\`\`typescript
-// Document loader
-import { CheerioWebBaseLoader } from "langchain/document_loaders/web/cheerio";
+### What is Fanaverse?
+Fanaverse is the world’s first and only philanthropic community for mobile native users.
 
-const loader = new CheerioWebBaseLoader(
-  "https://lilianweng.github.io/posts/2023-06-23-agent/"
-);
-const data = await loader.load();
-\`\`\`
+### What is Fana?
+Fana is the world’s first and only philanthropic community for mobile native users.
 
-Split the \`Document\` into chunks for embedding and vector storage.
+### What does Fana do?
+Fana is a tech4good platform, bringing together charities, brands, and people that want to make a positive impact TOGETHER.
 
+### What does Fanaverse do?
+Fanaverse is a tech4good platform, bringing together charities, brands, and people that want to make a positive impact TOGETHER.
 
-\`\`\`typescript
-import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
+### How do I get free money to donate?
+Fana partners with your favorite eCommerce brands. When you shop at one of these brands, you receive a treat - the store will reward you with some credits that you can use in the Fana app to create real impact. Each credit represents real money that gets donated by your favorite brands to causes that YOU choose.
 
-const textSplitter = new RecursiveCharacterTextSplitter({
-  chunkSize: 500,
-  chunkOverlap: 0,
-});
+### What rewards do I get?
+As you make an impact by giving to our great causes or sharing your progress bar fills and you unlock our totem pole characters.
 
-const splitDocs = await textSplitter.splitDocuments(data);
-\`\`\`
+### Are you a cryptocurrency?
+No, we are not a cryptocurrency.
 
-Embed and store the splits in a vector database (for demo purposes we use an unoptimized, in-memory example but you can [browse integrations here](/docs/modules/data_connection/vectorstores/integrations/)):
+### What if I changed my mind after donating?
+Change the past we cannot, but the future we can. Patience you must have, my young Padawan.
 
+### Who can I donate to?
+You can donate to all causes in our charity section [fanaverse.app](https://fanaverse.app/).
 
-\`\`\`typescript
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
-import { MemoryVectorStore } from "langchain/vectorstores/memory";
+### Where does my money go?
+Your money goes directly to the fantastic causes we have on our platform.
 
-const embeddings = new OpenAIEmbeddings();
+### What does my money do?
+Your money plants trees, funds schools, builds gyms. It is totally up to you. You have the freedom to create the impact that is near and dear to you.
 
-const vectorStore = await MemoryVectorStore.fromDocuments(splitDocs, embeddings);
-\`\`\`
+### How much do you charge?
+[To be added]
 
-Here are the three pieces together:
+### What is the best charity?
+We've put a lot of effort into curating the best high impact causes and you can find the best causes on our [charity page](#).
 
-![lc.png](/img/qa_data_load.png)
+### Where can I find out more about you?
+You can find out what we're up to on social media and we appreciate if you like, follow, and comment.
 
-### 1.2 Going Deeper
+### How can I help?
+Sharing is caring. It helps a lot if you share this on social media or if you know a brand you would like to see connect [kitty@myfana.com](mailto:kitty@myfana.com) and we do our best to bring them onboard as quickly as possible.
 
-#### 1.2.1 Integrations
+### Do you support charity?
+We support and work with charities found in our charity section but would love to know and appreciate any charities you would like us to work with. You can DM us or tag us on social media alongside your favorite charity.
 
-\`Document Loaders\`
+### How can I share a campaign?
+Head over to your impact page, click the share button and choose a campaign you want to share.
 
-* Browse document loader integrations [here](/docs/modules/data_connection/document_loaders/).
+### Are you a charity?
+We are a tech4good company, our charity partners are all registered charities though.
 
-* See further documentation on loaders [here](/docs/modules/data_connection/document_loaders/).
+### What is the totem pole?
+The totem pole is your personalized impact statement. Unlock it, build it, share it, and get ready for new characters to join as we grow.
 
-\`Document Transformers\`
+### When do I get an achievement or animal?
+As you make an impact by giving to our great causes or sharing on social media your progress bar fills and you unlock our totem pole characters.
 
-* All can ingest loaded \`Documents\` and process them (e.g., split).
+### What is Fana card?
+Fana will be launching a FREE spending and reward card that allows you to make purchases while collecting awesome rewards and making an impact.
 
-* See further documentation on transformers [here](/docs/modules/data_connection/document_transformers/).
+### What does it cost?
+£5 monthly.
 
-\`Vectorstores\`
+### What brands do you partner with?
+You will find our partners in-app and we always like to hear from you which brands you would like to see on here.
 
-* Browse vectorstore integrations [here](/docs/modules/data_connection/vectorstores/integrations/).
-
-* See further documentation on vectorstores [here](/docs/modules/data_connection/vectorstores/).
-
-## 2. Retrieval
-
-### 2.1 Getting started
-
-Retrieve [relevant splits](https://www.pinecone.io/learn/what-is-similarity-search/) for any question using \`similarity_search\`.
-
-
-\`\`\`typescript
-const relevantDocs = await vectorStore.similaritySearch("What is task decomposition?");
-
-console.log(relevantDocs.length);
-
-// 4
-\`\`\`
-
-
-### 2.2 Going Deeper
-
-#### 2.2.1 Retrieval
-
-Vectorstores are commonly used for retrieval.
-
-But, they are not the only option.
-
-For example, SVMs (see thread [here](https://twitter.com/karpathy/status/1647025230546886658?s=20)) can also be used.
-
-LangChain [has many retrievers and retrieval methods](/docs/modules/data_connection/retrievers/) including, but not limited to, vectorstores.
-
-All retrievers implement some common methods, such as \`getRelevantDocuments()\`.
-
-
-## 3. QA
-
-### 3.1 Getting started
-
-Distill the retrieved documents into an answer using an LLM (e.g., \`gpt-3.5-turbo\`) with \`RetrievalQA\` chain.
-
-
-\`\`\`typescript
-import { RetrievalQAChain } from "langchain/chains";
-import { ChatOpenAI } from "langchain/chat_models/openai";
-
-const model = new ChatOpenAI({ modelName: "gpt-3.5-turbo" });
-const chain = RetrievalQAChain.fromLLM(model, vectorstore.asRetriever());
-
-const response = await chain.call({
-  query: "What is task decomposition?"
-});
-console.log(response);
-
-/*
-  {
-    text: 'Task decomposition refers to the process of breaking down a larger task into smaller, more manageable subgoals. By decomposing a task, it becomes easier for an agent or system to handle complex tasks efficiently. Task decomposition can be done through various methods such as using prompting or task-specific instructions, or through human inputs. It helps in planning and organizing the steps required to complete a task effectively.'
-  }
-*/
-\`\`\`
-
-### 3.2 Going Deeper
-
-#### 3.2.1 Integrations
-
-\`LLMs\`
-
-* Browse LLM integrations and further documentation [here](/docs/modules/model_io/models/).
-
-#### 3.2.2 Customizing the prompt
-
-The prompt in \`RetrievalQA\` chain can be customized as follows.
-
-
-\`\`\`typescript
-import { RetrievalQAChain } from "langchain/chains";
-import { ChatOpenAI } from "langchain/chat_models/openai";
-import { PromptTemplate } from "langchain/prompts";
-
-const model = new ChatOpenAI({ modelName: "gpt-3.5-turbo" });
-
-const template = \`Use the following pieces of context to answer the question at the end.
-If you don't know the answer, just say that you don't know, don't try to make up an answer.
-Use three sentences maximum and keep the answer as concise as possible.
-Always say "thanks for asking!" at the end of the answer.
-{context}
-Question: {question}
-Helpful Answer:\`;
-
-const chain = RetrievalQAChain.fromLLM(model, vectorstore.asRetriever(), {
-  prompt: PromptTemplate.fromTemplate(template),
-});
-
-const response = await chain.call({
-  query: "What is task decomposition?"
-});
-
-console.log(response);
-
-/*
-  {
-    text: 'Task decomposition is the process of breaking down a large task into smaller, more manageable subgoals. This allows for efficient handling of complex tasks and aids in planning and organizing the steps needed to achieve the overall goal. Thanks for asking!'
-  }
-*/
-\`\`\`
-
-
-#### 3.2.3 Returning source documents
-
-The full set of retrieved documents used for answer distillation can be returned using \`return_source_documents=True\`.
-
-
-\`\`\`typescript
-import { RetrievalQAChain } from "langchain/chains";
-import { ChatOpenAI } from "langchain/chat_models/openai";
-
-const model = new ChatOpenAI({ modelName: "gpt-3.5-turbo" });
-
-const chain = RetrievalQAChain.fromLLM(model, vectorstore.asRetriever(), {
-  returnSourceDocuments: true
-});
-
-const response = await chain.call({
-  query: "What is task decomposition?"
-});
-
-console.log(response.sourceDocuments[0]);
-
-/*
-Document {
-  pageContent: 'Task decomposition can be done (1) by LLM with simple prompting like "Steps for XYZ.\\n1.", "What are the subgoals for achieving XYZ?", (2) by using task-specific instructions; e.g. "Write a story outline." for writing a novel, or (3) with human inputs.',
-  metadata: [Object]
-}
-*/
-\`\`\`
-
-
-#### 3.2.4 Customizing retrieved docs in the LLM prompt
-
-Retrieved documents can be fed to an LLM for answer distillation in a few different ways.
-
-\`stuff\`, \`refine\`, and \`map-reduce\` chains for passing documents to an LLM prompt are well summarized [here](/docs/modules/chains/document/).
-
-\`stuff\` is commonly used because it simply "stuffs" all retrieved documents into the prompt.
-
-The [loadQAChain](/docs/modules/chains/document/) methods are easy ways to pass documents to an LLM using these various approaches.
-
-
-\`\`\`typescript
-import { loadQAStuffChain } from "langchain/chains";
-
-const stuffChain = loadQAStuffChain(model);
-
-const stuffResult = await stuffChain.call({
-  input_documents: relevantDocs,
-  question: "What is task decomposition
-});
-
-console.log(stuffResult);
-/*
-{
-  text: 'Task decomposition is the process of breaking down a large task into smaller, more manageable subgoals or steps. This allows for efficient handling of complex tasks by focusing on one subgoal at a time. Task decomposition can be done through various methods such as using simple prompting, task-specific instructions, or human inputs.'
-}
-*/
-\`\`\`
-
-## 4. Chat
-
-### 4.1 Getting started
-
-To keep chat history, we use a variant of the previous chain called a \`ConversationalRetrievalQAChain\`.
-First, specify a \`Memory buffer\` to track the conversation inputs / outputs.
-
-
-\`\`\`typescript
-import { ConversationalRetrievalQAChain } from "langchain/chains";
-import { BufferMemory } from "langchain/memory";
-import { ChatOpenAI } from "langchain/chat_models/openai";
-
-const memory = new BufferMemory({
-  memoryKey: "chat_history",
-  returnMessages: true,
-});
-\`\`\`
-
-Next, we initialize and call the chain:
-
-\`\`\`typescript
-const model = new ChatOpenAI({ modelName: "gpt-3.5-turbo" });
-const chain = ConversationalRetrievalQAChain.fromLLM(model, vectorstore.asRetriever(), {
-  memory
-});
-
-const result = await chain.call({
-  question: "What are some of the main ideas in self-reflection?"
-});
-console.log(result);
-
-/*
-{
-  text: 'Some main ideas in self-reflection include:\n' +
-    '\n' +
-    '1. Iterative Improvement: Self-reflection allows autonomous agents to improve by continuously refining past action decisions and correcting mistakes.\n' +
-    '\n' +
-    '2. Trial and Error: Self-reflection plays a crucial role in real-world tasks where trial and error are inevitable. It helps agents learn from failed trajectories and make adjustments for future actions.\n' +
-    '\n' +
-    '3. Constructive Criticism: Agents engage in constructive self-criticism of their big-picture behavior to identify areas for improvement.\n' +
-    '\n' +
-    '4. Decision and Strategy Refinement: Reflection on past decisions and strategies enables agents to refine their approach and make more informed choices.\n' +
-    '\n' +
-    '5. Efficiency and Optimization: Self-reflection encourages agents to be smart and efficient in their actions, aiming to complete tasks in the least number of steps.\n' +
-    '\n' +
-    'These ideas highlight the importance of self-reflection in enhancing performance and guiding future actions.'
-}
-*/
-\`\`\`
-
-
-The \`Memory buffer\` has context to resolve \`"it"\` ("self-reflection") in the below question.
-
-
-\`\`\`typescript
-const followupResult = await chain.call({
-  question: "How does the Reflexion paper handle it?"
-});
-console.log(followupResult);
-
-/*
-{
-  text: "The Reflexion paper introduces a framework that equips agents with dynamic memory and self-reflection capabilities to improve their reasoning skills. The approach involves showing the agent two-shot examples, where each example consists of a failed trajectory and an ideal reflection on how to guide future changes in the agent's plan. These reflections are then added to the agent's working memory as context for querying a language model. The agent uses this self-reflection information to make decisions on whether to start a new trial or continue with the current plan."
-}
-*/
-\`\`\`
-
-
-### 4.2 Going deeper
-
-The [documentation](/docs/modules/chains/popular/chat_vector_db) on \`ConversationalRetrievalQAChain\` offers a few extensions, such as streaming and source documents.
-
-
-# Conversational Retrieval Agents
-
-This is an agent specifically optimized for doing retrieval when necessary while holding a conversation and being able
-to answer questions based on previous dialogue in the conversation.
-
-To start, we will set up the retriever we want to use, then turn it into a retriever tool. Next, we will use the high-level constructor for this type of agent.
-Finally, we will walk through how to construct a conversational retrieval agent from components.
-
-## The Retriever
-
-To start, we need a retriever to use! The code here is mostly just example code. Feel free to use your own retriever and skip to the next section on creating a retriever tool.
-
-\`\`\`typescript
-import { FaissStore } from "langchain/vectorstores/faiss";
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
-import { TextLoader } from "langchain/document_loaders/fs/text";
-import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
-
-const loader = new TextLoader("state_of_the_union.txt");
-const docs = await loader.load();
-const splitter = new RecursiveCharacterTextSplitter({
-  chunkSize: 1000,
-  chunkOverlap: 0
-});
-
-const texts = await splitter.splitDocuments(docs);
-
-const vectorStore = await FaissStore.fromDocuments(texts, new OpenAIEmbeddings());
-
-const retriever = vectorStore.asRetriever();
-\`\`\`
-
-## Retriever Tool
-
-Now we need to create a tool for our retriever. The main things we need to pass in are a \`name\` for the retriever as well as a \`description\`. These will both be used by the language model, so they should be informative.
-
-\`\`\`typescript
-import { createRetrieverTool } from "langchain/agents/toolkits";
-
-const tool = createRetrieverTool(retriever, {
-  name: "search_state_of_union",
-  description: "Searches and returns documents regarding the state-of-the-union.",
-});
-\`\`\`
-
-## Agent Constructor
-
-Here, we will use the high level \`create_conversational_retrieval_agent\` API to construct the agent.
-Notice that beside the list of tools, the only thing we need to pass in is a language model to use.
-
-Under the hood, this agent is using the OpenAIFunctionsAgent, so we need to use an ChatOpenAI model.
-
-\`\`\`typescript
-import { createConversationalRetrievalAgent } from "langchain/agents/toolkits";
-import { ChatOpenAI } from "langchain/chat_models/openai";
-
-const model = new ChatOpenAI({
-  temperature: 0,
-});
-
-const executor = await createConversationalRetrievalAgent(model, [tool], {
-  verbose: true,
-});
-\`\`\`
-
-We can now try it out!
-
-\`\`\`typescript
-const result = await executor.call({
-  input: "Hi, I'm Bob!"
-});
-
-console.log(result);
-
-/*
-  {
-    output: 'Hello Bob! How can I assist you today?',
-    intermediateSteps: []
-  }
-*/
-
-const result2 = await executor.call({
-  input: "What's my name?"
-});
-
-console.log(result2);
-
-/*
-  { output: 'Your name is Bob.', intermediateSteps: [] }
-*/
-
-const result3 = await executor.call({
-  input: "What did the president say about Ketanji Brown Jackson in the most recent state of the union?"
-});
-
-console.log(result3);
-
-/*
-  {
-    output: "In the most recent state of the union, President Biden mentioned Ketanji Brown Jackson. He nominated her as a Circuit Court of Appeals judge and described her as one of the nation's top legal minds who will continue Justice Breyer's legacy of excellence. He mentioned that she has received a broad range of support, including from the Fraternal Order of Police and former judges appointed by Democrats and Republicans.",
-    intermediateSteps: [
-      {...}
-    ]
-  }
-*/
-
-const result4 = await executor.call({
-  input: "How long ago did he nominate her?"
-});
-
-console.log(result4);
-
-/*
-  {
-    output: 'President Biden nominated Ketanji Brown Jackson four days before the most recent state of the union address.',
-    intermediateSteps: []
-  }
-*/
-\`\`\`
-
-Note that for the final call, the agent used previously retrieved information to answer the query and did not need to call the tool again!
-
-Here's a trace showing how the agent fetches documents to answer the question with the retrieval tool:
-
-https://smith.langchain.com/public/1e2b1887-ca44-4210-913b-a69c1b8a8e7e/r
-
-## Creating from components
-
-What actually is going on underneath the hood? Let's take a look so we can understand how to modify things going forward.
-
-### Memory
-
-In this example, we want the agent to remember not only previous conversations, but also previous intermediate steps.
-For that, we can use \`OpenAIAgentTokenBufferMemory\`. Note that if you want to change whether the agent remembers intermediate steps,
-how the long the retained buffer is, or anything like that you should change this part.
-
-\`\`\`typescript
-import { OpenAIAgentTokenBufferMemory } from "langchain/agents/toolkits";
-
-const memory = new OpenAIAgentTokenBufferMemory({
-  llm: model,
-  memoryKey: "chat_history",
-  outputKey: "output"
-});
-\`\`\`
-
-You should make sure \`memoryKey\` is set to \`"chat_history"\` and \`outputKey\` is set to \`"output"\` for the OpenAI functions agent.
-This memory also has \`returnMessages\` set to \`true\` by default.
-
-You can also load messages from prior conversations into this memory by initializing it with a pre-loaded chat history:
-
-\`\`\`typescript
-import { ChatOpenAI } from "langchain/chat_models/openai";
-import { OpenAIAgentTokenBufferMemory } from "langchain/agents/toolkits";
-import { HumanMessage, AIMessage } from "langchain/schema";
-import { ChatMessageHistory } from "langchain/memory";
-
-const previousMessages = [
-  new HumanMessage("My name is Bob"),
-  new AIMessage("Nice to meet you, Bob!"),
-];
-
-const chatHistory = new ChatMessageHistory(previousMessages);
-
-const memory = new OpenAIAgentTokenBufferMemory({
-  llm: new ChatOpenAI({}),
-  memoryKey: "chat_history",
-  outputKey: "output",
-  chatHistory,
-});
-\`\`\`
-
-### Agent executor
-
-We can recreate the agent executor directly with the \`initializeAgentExecutorWithOptions\` method.
-This allows us to customize the agent's system message by passing in a \`prefix\` into \`agentArgs\`.
-Importantly, we must pass in \`return_intermediate_steps: true\` since we are recording that with our memory object.
-
-\`\`\`typescript
-import { initializeAgentExecutorWithOptions } from "langchain/agents";
-
-const executor = await initializeAgentExecutorWithOptions(tools, llm, {
-  agentType: "openai-functions",
-  memory,
-  returnIntermediateSteps: true,
-  agentArgs: {
-    prefix:
-      prefix ??
-      \`Do your best to answer the questions. Feel free to use any tools available to look up relevant information, only if necessary.\`,
-  },
-});
-\`\`\`
-`;
+`
