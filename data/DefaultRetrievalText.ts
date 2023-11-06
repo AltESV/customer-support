@@ -1,127 +1,74 @@
 export default `
-# Fana FAQ
+### How do I open an account? Head over to Fana Signup and have your passport and a proof of address ready (recent bank-statement or utility bill).
 
-Get answers to the most frequently asked questions about Fana and Fanaverse.
+### Is Fana a bank? Fana is not a bank but our accounts and cards are provided by Paynetics UK (Company number 1248133). Paynetics UK is an electronic money institution authorised and regulated by the Financial Conduct Authority (firm reference number 942777).
 
-## General Questions
+### Who is Paynetics? Paynetics UK is an electronic money institution authorised and regulated by the Financial Conduct Authority (firm reference number 942777).
 
-### How do I open an account?
-Head over to [Fana Signup](https://fanaverse.app/#/signup) and have your passport and a proof of address ready (recent bank-statement or utility bill).
+### Do I need to be a UK resident? Yes, you currently need to be resident in the UK to get a Fana card.
 
-### Is Fana a bank?
-Fana is not a bank but our accounts and cards are provided by Paynetics UK (Company number 1248133). Paynetics UK is an electronic money institution authorised and regulated by the Financial Conduct Authority (firm reference number 942777).
+### What age do I need to be? Currently you must be 18 or older.
 
-### Who is Paynetics?
-Paynetics UK is an electronic money institution authorised and regulated by the Financial Conduct Authority (firm reference number 942777).
+### What fees do you charge? We charge a flat £5 subscription and in case of the physical card a one time shipping fee.
 
-### Do I need to be a UK resident?
-Yes, you currently need to be resident in the UK to get a Fana card.
+### I have trouble logging in. Please have a look at our tutorial and in case you still get an error please [get in touch with us here](#).
 
-### What age do I need to be?
-Currently you must be 18 or older.
+### I need help. Please get in touch with us via the help section.
 
-### What fees do you charge?
-We charge a flat £5 subscription and in case of the physical card a one time shipping fee.
+### How do I cancel? Please get in touch with us via the app or help section.
 
-### I have trouble logging in.
-Please have a look at our tutorial and in case you still get an error please [get in touch with us here](#).
+### Can I withdraw money from an ATM? We currently do not support ATM withdrawals.
 
-### I need help.
-[Please get in touch with us](#).
+### Can I make transfers? We curreently do not support transfers.
 
-### How do I cancel?
-[Please get in touch with us](#).
+### What countries does your app work in? Our product is live in the U.K.
 
-### Can I withdraw money from an ATM?
-[To be added]
+### How do I charge my card? Please check our tutorials section.
 
-### Can I make transfers?
-[To be added]
+### What is Fanaverse? Fanaverse is the world’s first and only philanthropic community for mobile native users.
 
-### What countries does your app work in?
-[To be added]
+### What is Fana? Fana is the world’s first and only philanthropic community for mobile native users.
 
-### How do I charge my card?
-[To be added]
+### What does Fana do? Fana is a tech4good platform, bringing together charities, brands, and people that want to make a positive impact TOGETHER.
 
-### What if I changed my mind after funding my wallet?
-[To be added]
+### What does Fanaverse do? Fanaverse is a tech4good platform, bringing together charities, brands, and people that want to make a positive impact TOGETHER.
 
-### Can I spend the money in my wallet?
-[To be added]
+### How do I get free money to donate? Fana partners with your favorite eCommerce brands. When you shop at one of these brands, you receive a treat - the store will reward you with some credits that you can use in the Fana app to create real impact. Each credit represents real money that gets donated by your favorite brands to causes that YOU choose.
 
-### What can I do with my achievements?
-[To be added]
+### What rewards do I get? As you make an impact by giving to our great causes or sharing your progress bar fills and you unlock our totem pole characters.
 
-## About Fana & Fanaverse
+### Are you a cryptocurrency? No, we are not a cryptocurrency.
 
-### What is Fanaverse?
-Fanaverse is the world’s first and only philanthropic community for mobile native users.
+### What if I changed my mind after donating? Change the past we cannot, but the future we can. Patience you must have, my young Padawan.
 
-### What is Fana?
-Fana is the world’s first and only philanthropic community for mobile native users.
+### Who can I donate to? You can donate to all causes in our charity section in app.
 
-### What does Fana do?
-Fana is a tech4good platform, bringing together charities, brands, and people that want to make a positive impact TOGETHER.
+### Where does my money go? Your money goes directly to the fantastic causes we have on our platform.
 
-### What does Fanaverse do?
-Fanaverse is a tech4good platform, bringing together charities, brands, and people that want to make a positive impact TOGETHER.
+### What does my money do? Your money plants trees, funds schools, builds gyms. It is totally up to you. You have the freedom to create the impact that is near and dear to you.
 
-### How do I get free money to donate?
-Fana partners with your favorite eCommerce brands. When you shop at one of these brands, you receive a treat - the store will reward you with some credits that you can use in the Fana app to create real impact. Each credit represents real money that gets donated by your favorite brands to causes that YOU choose.
+### How much do you charge? We charge a £5 subscription fee for our card product.
 
-### What rewards do I get?
-As you make an impact by giving to our great causes or sharing your progress bar fills and you unlock our totem pole characters.
+### What is the best charity? We've put a lot of effort into curating the best high impact causes and you can find the best causes on our charity page.
 
-### Are you a cryptocurrency?
-No, we are not a cryptocurrency.
+### Where can I find out more about you? You can find out what we're up to on social media and we appreciate if you like, follow, and comment.
 
-### What if I changed my mind after donating?
-Change the past we cannot, but the future we can. Patience you must have, my young Padawan.
+### How can I help? Sharing is caring. It helps a lot if you share this on social media or if you know a brand you would like to see connect and we do our best to bring them onboard as quickly as possible.
 
-### Who can I donate to?
-You can donate to all causes in our charity section [fanaverse.app](https://fanaverse.app/).
+### Do you support charity? We support and work with charities found in our charity section but would love to know and appreciate any charities you would like us to work with. You can DM us or tag us on social media alongside your favorite charity.
 
-### Where does my money go?
-Your money goes directly to the fantastic causes we have on our platform.
+### How can I share a campaign? Head over to your impact page, click the share button and choose a campaign you want to share.
 
-### What does my money do?
-Your money plants trees, funds schools, builds gyms. It is totally up to you. You have the freedom to create the impact that is near and dear to you.
+### Are you a charity? We are a tech4good company, our charity partners are all registered charities though.
 
-### How much do you charge?
-[To be added]
+### What is the totem pole? The totem pole is your personalized impact statement. Unlock it, build it, share it, and get ready for new characters to join as we grow.
 
-### What is the best charity?
-We've put a lot of effort into curating the best high impact causes and you can find the best causes on our [charity page](#).
+### When do I get an achievement or animal? As you make an impact by giving to our great causes or sharing on social media your progress bar fills and you unlock our totem pole characters.
 
-### Where can I find out more about you?
-You can find out what we're up to on social media and we appreciate if you like, follow, and comment.
+### What is Fana card? Fana will be launching a FREE spending and reward card that allows you to make purchases while collecting awesome rewards and making an impact.
 
-### How can I help?
-Sharing is caring. It helps a lot if you share this on social media or if you know a brand you would like to see connect [kitty@myfana.com](mailto:kitty@myfana.com) and we do our best to bring them onboard as quickly as possible.
+### What does it cost? £5 monthly.
 
-### Do you support charity?
-We support and work with charities found in our charity section but would love to know and appreciate any charities you would like us to work with. You can DM us or tag us on social media alongside your favorite charity.
-
-### How can I share a campaign?
-Head over to your impact page, click the share button and choose a campaign you want to share.
-
-### Are you a charity?
-We are a tech4good company, our charity partners are all registered charities though.
-
-### What is the totem pole?
-The totem pole is your personalized impact statement. Unlock it, build it, share it, and get ready for new characters to join as we grow.
-
-### When do I get an achievement or animal?
-As you make an impact by giving to our great causes or sharing on social media your progress bar fills and you unlock our totem pole characters.
-
-### What is Fana card?
-Fana will be launching a FREE spending and reward card that allows you to make purchases while collecting awesome rewards and making an impact.
-
-### What does it cost?
-£5 monthly.
-
-### What brands do you partner with?
-You will find our partners in-app and we always like to hear from you which brands you would like to see on here.
+### What brands do you partner with? You will find our partners in-app and we always like to hear from you which brands you would like to see on here.
 
 `
