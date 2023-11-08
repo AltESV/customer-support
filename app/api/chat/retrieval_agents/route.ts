@@ -15,6 +15,7 @@ import { ChatMessageHistory } from "langchain/memory";
 import { initializeAgentExecutorWithOptions } from "langchain/agents";
 
 export const runtime = "nodejs";
+export const maxDuration= 300;
 
 const convertVercelMessageToLangChainMessage = (message: VercelChatMessage) => {
   if (message.role === "user") {
