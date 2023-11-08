@@ -7,7 +7,7 @@ import { ChatOpenAI } from "langchain/chat_models/openai";
 import { PromptTemplate } from "langchain/prompts";
 import { JsonOutputFunctionsParser } from "langchain/output_parsers";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 const TEMPLATE = `Extract the requested fields from the input.
 
